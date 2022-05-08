@@ -17,7 +17,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand as={Link} to='/'>Spice House</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -28,7 +28,7 @@ const Header = () => {
                             <Nav.Link href="#deets">More deets</Nav.Link>
                             {
                                 user ?
-                                    <button onClick={handleLogout}><Nav.Link as={Link} to='/' >LogOut</Nav.Link></button>
+                                    <button className='btn btn-link text-decoration-none' onClick={handleLogout}><Nav.Link as={Link} to='/' >LogOut</Nav.Link></button>
                                     :
                                     <Nav.Link as={Link} to='/login' >Login</Nav.Link>
                             }

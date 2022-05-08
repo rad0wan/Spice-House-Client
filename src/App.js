@@ -5,6 +5,9 @@ import Header from './Share/Header/Header';
 import Footer from './Share/Footer/Footer';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import Inventory from './Pages/Inventory/Inventory';
+import RequireAuth from './Share/RequireAuth/RequireAuth';
+import ManageInventory from './Pages/ManageInventory/ManageInventory';
 
 function App() {
   return (
@@ -14,6 +17,16 @@ function App() {
         <Route element={<Home></Home>} path='/'></Route>
         <Route element={<Login></Login>} path='/login'></Route>
         <Route element={<Register></Register>} path='/register'></Route>
+        <Route element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>} path='/inventory/:id'>
+        </Route>
+        <Route element={
+          <RequireAuth>
+            <ManageInventory></ManageInventory>
+          </RequireAuth>} path='/inventory/:id'>
+        </Route>
       </Routes>
       <Footer></Footer>
     </div>

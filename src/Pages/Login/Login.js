@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -9,6 +9,7 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    let location = useLocation();
     const navigate = useNavigate()
     const [
         signInWithEmailAndPassword,
@@ -19,9 +20,10 @@ const Login = () => {
 
     const [signInWithGoogle, userG, loadingG, errorG] = useSignInWithGoogle(auth);
 
+    let from = location.state?.from?.pathname || "/";
 
     if (user || userG) {
-        navigate('/')
+        navigate(from, { replace: true });
     }
 
     const handleLogIn = event => {

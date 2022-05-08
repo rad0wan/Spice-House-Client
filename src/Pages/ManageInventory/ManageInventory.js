@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Product from '../Product/Product';
+import TableDetails from '../TableDetails/TableDetails';
 
-const Products = () => {
+const ManageInventory = () => {
 
     const [products, setProducts] = useState()
     useEffect(() => {
@@ -15,19 +15,19 @@ const Products = () => {
     }, [])
 
     return (
-        <div className='w-75 mx-auto'>
-            <h1 className='text-center text-warning my-5'>Best Sellers</h1>
-            <div className="row row-cols-1 row-cols-md-3 g-4 mx-auto">
+        <div>
+            <h1>ManageInventory</h1>
+            <table className="table">
                 {
-                    products && products.slice(0, 6).map(product => <Product key={product._id} product={product}></Product>)
+                    products && products.map(product => <TableDetails class="table"> key={product._id} product={product}</TableDetails>)
                 }
 
-            </div>
+            </table>
             <div className='w-100 d-flex justify-content-center align-items-center'>
-                <button className='btn btn-warning mt-5'><Link to='/'>Manage Inventory</Link></button>
+                <button className='btn btn-warning mt-5'><Link to='/'>Add New Item</Link></button>
             </div>
         </div>
     );
 };
 
-export default Products;
+export default ManageInventory;
