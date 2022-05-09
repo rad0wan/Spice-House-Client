@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Inventory = () => {
+const Inventory =  () => {
     const [product, setProduct] = useState({})
-    const [quantity, setQuantity] = useState(0)
+    let quantity1 =  product?.quantity;
+    const [quantity, setQuantity] = useState(quantity1)
     const { id } = useParams();
     console.log(id);
     useEffect(() => {
@@ -15,9 +16,21 @@ const Inventory = () => {
     const handleDelivery = () => {
         let quantity = product.quantity;
         quantity = quantity - 1;
+        console.log(product.quantity);
+        console.log(quantity);
         setQuantity(quantity);
 
     }
+
+    useEffect(() => {
+        const quan = { quantity: `${quantity}` };
+        axios.put(`http://localhost:5000/inventory/${id}`, quan)
+            .then(response => {
+                setQuantity(response.data.updatedAt)
+            });
+
+        // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    }, [quantity]);
 
     return (
         <div className="card mb-3" >

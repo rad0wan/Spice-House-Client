@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../../hooks/Loading';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     if (user) {
         navigate('/')
@@ -28,6 +29,10 @@ const Register = () => {
         createUserWithEmailAndPassword(email, password)
         console.log(email, password);
 
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
 
     return (
@@ -48,8 +53,9 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
+                <p className='text-danger'>{error?.message}</p>
                 <Button variant="primary" type="login">
-                    Login
+                    Register
                 </Button>
                 <p>Already Register?<Link to='/login' className='btn-link'>Login Now</Link></p>
             </Form>

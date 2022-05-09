@@ -1,18 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
 import TableDetails from '../TableDetails/TableDetails';
 
 const ManageInventory = () => {
 
-    const [products, setProducts] = useState()
-    useEffect(() => {
-        axios.get('http://localhost:5000/products')
-            .then(response => {
-                console.log(response.data);
-                setProducts(response.data)
-            })
-    }, [])
+    // const [products, setProducts] = useState()
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/products')
+    //         .then(response => {
+    //             console.log(response.data);
+    //             setProducts(response.data)
+    //         })
+    // }, [])
+
+    const [products, setProducts] = useProducts('')
+    console.log(products);
 
     return (
         <div className="table-responsive">

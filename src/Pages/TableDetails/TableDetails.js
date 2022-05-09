@@ -1,17 +1,23 @@
 import axios from 'axios';
 import React from 'react';
+import useProducts from '../../hooks/useProducts';
 
 const TableDetails = ({ product }) => {
+    const [products, setProducts] = useProducts()
     const { name, quantity, _id } = product;
 
     const handleDelete = (id) => {
+        console.log(id);
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:3000/inventory/${id}`
+            const url = `http://localhost:5000/inventory/${id}`
             axios.delete(url)
                 .then(response => {
+                    const remaining = products.filter(product => product._id !== id)
+                    setProducts(remaining)
                     alert('Delete successful')
-                    console.log(response);
+                    console.log(response, remaining);
+                    console.log(products);
                 })
         }
     }

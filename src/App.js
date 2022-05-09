@@ -12,6 +12,8 @@ import AddNewItem from './Pages/AddNewItem/AddNewItem';
 import MyItem from './Pages/MyItem/MyItem';
 import Blogs from './Pages/Blogs/Blogs';
 import NotFound from './Share/NotFound/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
         <Route element={<NotFound></NotFound>} path='*'></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
