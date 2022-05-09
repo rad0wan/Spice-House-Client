@@ -24,7 +24,7 @@ const Products = () => {
 
             </div>
             <div className='w-100 d-flex justify-content-center align-items-center'>
-                <button className='btn btn-warning mt-5'><Link to='/'>Manage Inventory</Link></button>
+                <button className='btn btn-warning mt-5'><Link className='text-decoration-none text-black' to='/manageInventory'>Manage Inventory</Link></button>
             </div>
         </div>
     );

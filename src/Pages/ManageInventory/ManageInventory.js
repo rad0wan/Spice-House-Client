@@ -31,10 +31,9 @@ const ManageInventory = () => {
                         products && products.map(product => <TableDetails class="table" key={product._id} product={product} > </TableDetails>)
                     }
                 </tbody>
-
             </table>
             <div className='w-100 d-flex justify-content-center align-items-center'>
-                <button className='btn btn-warning mt-5'><Link to='/addNewItem'>Add New Item</Link></button>
+                <button className='btn btn-warning mt-4'><Link className='text-decoration-none text-black' to='/addNewItem'>Add New Item</Link></button>
             </div>
         </div>
     );

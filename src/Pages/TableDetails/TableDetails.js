@@ -8,12 +8,10 @@ const TableDetails = ({ product }) => {
         const proceed = window.confirm('are you sure?')
         if (proceed) {
             const url = `http://localhost:3000/inventory/${id}`
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
+            axios.delete(url)
+                .then(response => {
+                    alert('Delete successful')
+                    console.log(response);
                 })
         }
     }
