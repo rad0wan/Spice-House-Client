@@ -10,7 +10,7 @@ const AddNewItem = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data)
-        axios.post(`http://localhost:5000/products`, data)
+        axios.post(`https://desolate-caverns-29580.herokuapp.com/products`, data)
             .then(response => {
                 console.log(response);
                 const { data } = response;

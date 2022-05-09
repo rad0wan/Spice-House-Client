@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Inventory =  () => {
+const Inventory = () => {
     const [product, setProduct] = useState({})
-    let quantity1 =  product?.quantity;
+    let quantity1 = product?.quantity;
     const [quantity, setQuantity] = useState(quantity1)
     const { id } = useParams();
     console.log(id);
     useEffect(() => {
-        axios.get(`http://localhost:5000/inventory/${id}`)
+        axios.get(`https://desolate-caverns-29580.herokuapp.com/inventory/${id}`)
             .then(response => setProduct(response.data))
     }, [])
 
@@ -24,7 +24,7 @@ const Inventory =  () => {
 
     useEffect(() => {
         const quan = { quantity: `${quantity}` };
-        axios.put(`http://localhost:5000/inventory/${id}`, quan)
+        axios.put(`https://desolate-caverns-29580.herokuapp.com/inventory/${id}`, quan)
             .then(response => {
                 setQuantity(response.data.updatedAt)
             });

@@ -10,7 +10,7 @@ const TableDetails = ({ product }) => {
         console.log(id);
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:5000/inventory/${id}`
+            const url = `https://desolate-caverns-29580.herokuapp.com/inventory/${id}`
             axios.delete(url)
                 .then(response => {
                     const remaining = products.filter(product => product._id !== id)
