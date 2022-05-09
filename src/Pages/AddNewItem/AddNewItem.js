@@ -24,7 +24,7 @@ const AddNewItem = () => {
         <div className='w-50 mx-auto'>
             <h1 style={{ color: 'orange' }} className='text-center my-4'>AddNewItem</h1>
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-3' placeholder='Name'  {...register("name", { required: true, maxLength: 20 })} />
+                <input className='mb-3' placeholder='Name'  {...register("name",)} />
                 <input className='mb-3' value={user.email} type={'email'} placeholder='email'  {...register("email")} readOnly />
                 <input className='mb-3' placeholder='details' {...register("details")} />
                 <input className='mb-3' type="number" placeholder='quantity' {...register("quantity")} />
